@@ -1,0 +1,5 @@
+{
+    "javascript.inlayHints.enumMemberValues.enabled": false,
+    "typescript.inlayHints.enumMemberValues.enabled": true,
+    "editor.detectIndentation": true
+}
