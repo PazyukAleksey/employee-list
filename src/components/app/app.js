@@ -45,32 +45,31 @@ class App extends Component{
     })
   }
 
-  toggleRise = (id) => {
+  onToggleProp = (id, prop) => {
     this.setState(({data}) => ({
       data: data.map(item => {
         if(item.id == id) {
-          return {...item, rise: !item.rise }
+          return {...item, [prop]: !item[prop] }
         } 
         return item;
       })
     }))
   }
 
-  toggleIncrease = (id) => {
-    this.setState(({data}) => ({
-      data: data.map(item => {
-        if(item.id == id) {
-          return {...item, increase: !item.increase }
-        } 
-        return item;
-      })
-    }))
+  info = () => {
+    let info = {};
+    let count = 0
+    this.state.data.map(item => item.increase ? count++ : false)
+    info.count = this.state.data.length;
+    info.countIncrease = count;
+    return info;
   }
   
   render() {
     return (
       <div className="app">
-          <AppInfo />
+          <AppInfo 
+          info={this.info}/>
   
           <div className="search-panel">
               <SearchPanel/>
@@ -80,8 +79,7 @@ class App extends Component{
           <EmployeesList 
             data={this.state.data}
             onDelete={this.deleteItem}
-            toggleIncrease = {this.toggleIncrease}
-            toggleRise={this.toggleRise}/>
+            onToggleProp = {this.onToggleProp}/>
           <EmployeesAddForm  addItem={this.addItem} />
       </div>
     );
