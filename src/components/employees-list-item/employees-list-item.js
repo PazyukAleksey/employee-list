@@ -1,5 +1,4 @@
 import './employees-list-item.css';
-import { Component } from 'react';
 
 const EmployeesListItem = (props) => {
 
